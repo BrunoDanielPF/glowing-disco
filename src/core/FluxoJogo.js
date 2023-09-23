@@ -1,4 +1,4 @@
-import { geraDeck, criaCartasNoDeck, criaCartasNaMao } from '../functions/CardFunctions.js';
+import { geraDeck, criaCartasNoDeck, criaCartasNaMao, mostraProximaCarta } from '../functions/CardFunctions.js';
 /**
  *  Adiciona 5 cartas na mão do jogador
  *  Remove uma carta do deck e adiciona na mão
@@ -28,18 +28,7 @@ export function moverCartaDoDeckParaMao(event) {
         var divCarta = carta.children;
         const divCartaArray = Array.from(divCarta);
 //TODO corrigir bug: desc: quando a carta e clicada para atribuir a mao, a carta nao e removida do deck e nao e mostrada a proxima carta
-        // Iterar pela matriz em ordem inversa
-        for (let i = divCartaArray.length - 1; i >= 0; i--) {
-            const carta = divCartaArray[i];
-            const cartaID = carta.getAttribute("id");
-            if (parseInt(cartaID) > maiorID) {
-                carta.classList.add("card-in-mao");
-                maoJogadorDiv.appendChild(carta.cloneNode(true));
-                maiorID = parseInt(cartaID);
-                cartaID.remove();
-                break;
-            }
-        }
+        mostraProximaCarta(divCartaArray);
     });
 }
 

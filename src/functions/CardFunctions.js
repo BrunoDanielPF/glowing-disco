@@ -62,6 +62,20 @@ export function criaCartasNaMao(maoDoJogador) {
     }
 }
 
+export function mostraProximaCarta(carta) {
+    let ultimoIndice = carta.length - 1;
+
+    if(ultimoIndice >= 0) {
+        const cartaPresente = carta[ultimoIndice];
+        cartaPresente.remove();
+        // if(cartaPresente >= 0) {
+            if(cartaPresente != null) {
+            ultimoIndice--
+            carta[ultimoIndice].style.display = "block";
+        }
+    }
+}
+
 function criarCartaNaMao(carta) {
     const maoJogadorDiv = document.getElementById("mao-jogador");
     const cartaDiv = document.createElement("div");
