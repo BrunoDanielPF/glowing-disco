@@ -1,4 +1,4 @@
-import { iniciarJogo, dragOver, drop } from "./core/FluxoJogo.js";
+import { iniciarJogo, moverCartaDoDeckParaMao, dragOver, drop } from "./core/FluxoJogo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     iniciarJogo();
@@ -12,3 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+const zonaDeck = document.querySelector('.zone[data-zona="deck"]');
+zonaDeck.addEventListener("click", moverCartaDoDeckParaMao);

@@ -1,4 +1,4 @@
-import {Card} from '../model/Card.js'
+import { Card } from '../model/Card.js'
 
 export function geraDeck(quantidadeCartas) {
     const deckJogador = [];
@@ -13,19 +13,48 @@ export function geraDeck(quantidadeCartas) {
 
 export function criaCartasNoDeck(deckJogador) {
     var quantidadeDeck = 0;
+    const zonaDeck = document.querySelector('.zone[data-zona="deck"]');
     for (const carta of deckJogador) {
         quantidadeDeck++;
+        const cartaDiv = document.createElement("div");
+
+        const quantidadeCartaDeck = document.createElement("span");
+        quantidadeCartaDeck.textContent = quantidadeDeck;
+        cartaDiv.appendChild(quantidadeCartaDeck);
+
+        const nomeCarta = carta.nome;
+        cartaDiv.setAttribute("data-nome", nomeCarta);
+        cartaDiv.setAttribute("id", quantidadeDeck);
+
+        const nomeCartaSpan = document.createElement("span");
+        nomeCartaSpan.textContent = carta.nome;
+        cartaDiv.appendChild(nomeCartaSpan);
+
+        const ataqueCartaSpan = document.createElement("span");
+        ataqueCartaSpan.textContent = `Ataque: ${carta.ataque}`;
+        cartaDiv.appendChild(ataqueCartaSpan);
+
+        const defesaCartaSpan = document.createElement("span");
+        defesaCartaSpan.textContent = `Defesa: ${carta.defesa}`;
+        cartaDiv.appendChild(defesaCartaSpan);
+
+        cartaDiv.setAttribute("draggable", true);
+        cartaDiv.style.position = "absolute";
+        cartaDiv.style.zIndex = quantidadeDeck; 
+
+        if (quantidadeDeck === deckJogador.length) {
+            // Apenas a última div será visível
+            cartaDiv.style.display = "block";
+        } else {
+            // Oculta as demais divs
+            cartaDiv.style.display = "none";
+        }
+
+        cartaDiv.addEventListener("dragstart", dragStart);
+        zonaDeck.appendChild(cartaDiv);
     }
-    const cartaDiv = document.createElement("div");
-    const quantidadeCartaDeck = document.createElement("span");
-    quantidadeCartaDeck.textContent = quantidadeDeck
-    cartaDiv.appendChild(quantidadeCartaDeck);
-    cartaDiv.classList.add("card-in-mao");
-    cartaDiv.setAttribute("draggable", true);
-    cartaDiv.addEventListener("dragstart", dragStart);
-    const zonaTabuleiro = document.querySelector(`.zone[data-zona=deck]`);
-    zonaTabuleiro.appendChild(cartaDiv)
 }
+
 
 export function criaCartasNaMao(maoDoJogador) {
     for (const carta of maoDoJogador) {

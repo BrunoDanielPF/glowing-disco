@@ -15,6 +15,34 @@ export function iniciarJogo() {
     geraDeck();
 }
 
+export function moverCartaDoDeckParaMao(event) {
+    const cartaDiv = event.target;
+
+    const maoJogadorDiv = document.getElementById("mao-jogador");
+
+    const cartasDeck = document.querySelectorAll('.zone[data-zona="deck"]');
+
+    let maiorID = -1;
+
+    cartasDeck.forEach((carta) => {
+        var divCarta = carta.children;
+        const divCartaArray = Array.from(divCarta);
+//TODO corrigir bug: desc: quando a carta e clicada para atribuir a mao, a carta nao e removida do deck e nao e mostrada a proxima carta
+        // Iterar pela matriz em ordem inversa
+        for (let i = divCartaArray.length - 1; i >= 0; i--) {
+            const carta = divCartaArray[i];
+            const cartaID = carta.getAttribute("id");
+            if (parseInt(cartaID) > maiorID) {
+                carta.classList.add("card-in-mao");
+                maoJogadorDiv.appendChild(carta.cloneNode(true));
+                maiorID = parseInt(cartaID);
+                cartaID.remove();
+                break;
+            }
+        }
+    });
+}
+
 export function dragOver(event) {
     event.preventDefault();
 }
