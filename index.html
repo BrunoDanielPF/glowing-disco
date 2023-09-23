@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Jogo de Cartas</title>
+    <style>
+        /* Estilos para o tabuleiro */
+        #tabuleiro {
+            width: 100%;
+            height: 400px;
+            background-color: green;
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: space-around;
+        }
+
+        #tabuleiro-parte-alta {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            top: 250px;
+        }
+
+        #tabuleiro-parte-baixa {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            width: 80%;
+            top: 250px;
+        }
+
+        /* Estilos para as cartas */
+        .card {
+            width: 100px;
+            height: 150px;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #mao-jogador,
+        #mao-oponente {
+            display: flex;
+            /* justify-content: space-between; */
+            padding: 10px;
+            position: absolute;
+        }
+
+        .card-in-mao {
+            width: 80px;
+            height: 120px;
+            background-color: white;
+            border: 1px solid black;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            margin: 0 5px; 
+        }
+
+        .zone {
+            border: 2px dashed rgb(249, 0, 0);
+            width: 10%;
+            height: 180px;
+            margin: 5px;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            padding: 20px;
+            background-color: #592525;
+            position: relative;
+        }
+
+        .mao {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            padding: 10px;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div id="mao-oponente">
+            <!-- Aqui você exibirá as cartas na mão do oponente -->
+        </div>
+        <div id="tabuleiro-container">
+            <div id="tabuleiro">
+                <div id="tabuleiro-parte-baixa">
+                    <div class="zone" data-zona="fusao" ondrop="drop(event, 'fusao')" ondragover="dragOver(event)">
+                        Zona de fusao
+                    </div>
+                    <div class="zone" data-zona="magias1" ondrop="drop(event, 'magias1')" ondragover="dragOver(event)">
+                        Zona de Magias/Armadilhas
+                    </div>
+                    <div class="zone" data-zona="magias2" ondrop="drop(event, 'magias2')" ondragover="dragOver(event)">
+                        Zona de Magias/Armadilhas
+                    </div>
+                    <div class="zone" data-zona="magias3" ondrop="drop(event, 'magias3')" ondragover="dragOver(event)">
+                        Zona de Magias/Armadilhas
+                    </div>
+                    <div class="zone" data-zona="magias4" ondrop="drop(event, 'magias4')" ondragover="dragOver(event)">
+                        Zona de Magias/Armadilhas
+                    </div>
+                    <div class="zone" data-zona="magias5" ondrop="drop(event, 'magias5')" ondragover="dragOver(event)">
+                        Zona de Magias/Armadilhas
+                    </div>
+                    <div class="zone" data-zona="deck" ondrop="drop(event, 'deck')" ondragover="dragOver(event)">
+                        Zona do deck
+                    </div>
+                </div>
+                <div id="tabuleiro-parte-alta">
+                    <div class="zone" data-zona="campo" ondrop="drop(event, 'campo')" ondragover="dragOver(event)">
+                        Zona de Campo
+                    </div>
+                    <div class="zone" data-zona="monstros1" ondrop="drop(event, 'monstros1')"
+                        ondragover="dragOver(event)">
+                        Zona de Monstros
+                    </div>
+                    <div class="zone" data-zona="monstros2" ondrop="drop(event, 'monstros2')"
+                        ondragover="dragOver(event)">
+                        Zona de Monstros
+                    </div>
+                    <div class="zone" data-zona="monstros3" ondrop="drop(event, 'monstros3')"
+                        ondragover="dragOver(event)">
+                        Zona de Monstros
+                    </div>
+                    <div class="zone" data-zona="monstros4" ondrop="drop(event, 'monstros4')"
+                        ondragover="dragOver(event)">
+                        Zona de Monstros
+                    </div>
+                    <div class="zone" data-zona="monstros5" ondrop="drop(event, 'monstros5')"
+                        ondragover="dragOver(event)">
+                        Zona de Monstros
+                    </div>
+                    <div class="zone" data-zona="cemiterio" ondrop="drop(event, 'cemiterio')"
+                        ondragover="dragOver(event)">
+                        Cemitério
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mao" id="mao-jogador">
+            <!-- Aqui serão exibidas as cartas na mão do jogador -->
+        </div>
+        <div id="informacoes">
+            <!-- Aqui você exibirá informações sobre o jogo, como vida, turnos, etc. -->
+        </div>
+        <script type="module" src="src/script.js"></script>
+    </body>
+
+</html>
