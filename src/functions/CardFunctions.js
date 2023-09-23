@@ -11,6 +11,28 @@ export function geraDeck(quantidadeCartas) {
     return deckJogador;
 }
 
+export function criaCartasNoDeck(deckJogador) {
+    var quantidadeDeck = 0;
+    for (const carta of deckJogador) {
+        quantidadeDeck++;
+    }
+    const cartaDiv = document.createElement("div");
+    const quantidadeCartaDeck = document.createElement("span");
+    quantidadeCartaDeck.textContent = quantidadeDeck
+    cartaDiv.appendChild(quantidadeCartaDeck);
+    cartaDiv.classList.add("card-in-mao");
+    cartaDiv.setAttribute("draggable", true);
+    cartaDiv.addEventListener("dragstart", dragStart);
+    const zonaTabuleiro = document.querySelector(`.zone[data-zona=deck]`);
+    zonaTabuleiro.appendChild(cartaDiv)
+}
+
+export function criaCartasNaMao(maoDoJogador) {
+    for (const carta of maoDoJogador) {
+        criarCartaNaMao(carta);
+    }
+}
+
 function criarCartaNaMao(carta) {
     const maoJogadorDiv = document.getElementById("mao-jogador");
     const cartaDiv = document.createElement("div");
@@ -35,29 +57,7 @@ function criarCartaNaMao(carta) {
     cartaDiv.addEventListener("dragstart", dragStart);
     maoJogadorDiv.appendChild(cartaDiv);
 }
-
-export function criaCartasNoDeck(deckJogador) {
-    var quantidadeDeck = 0;
-    for (const carta of deckJogador) {
-        quantidadeDeck++;
-    }
-    const cartaDiv = document.createElement("div");
-    const quantidadeCartaDeck = document.createElement("span");
-    quantidadeCartaDeck.textContent = quantidadeDeck
-    cartaDiv.appendChild(quantidadeCartaDeck);
-    cartaDiv.classList.add("card-in-mao");
-    cartaDiv.setAttribute("draggable", true);
-    const zonaTabuleiro = document.querySelector(`.zone[data-zona=deck]`);
-    zonaTabuleiro.appendChild(cartaDiv)
-}
-
-export function criaCartasNaMao(maoDoJogador) {
-    for (const carta of maoDoJogador) {
-        criarCartaNaMao(carta);
-    }
-}
-
-
+var cartaArrastada = null
 function dragStart(event) {
     cartaArrastada = event.target;
     event.dataTransfer.setData("text", event.target.id);

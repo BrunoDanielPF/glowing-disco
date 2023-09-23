@@ -86,71 +86,64 @@
 
     <body>
         <div id="mao-oponente">
-            <!-- Aqui você exibirá as cartas na mão do oponente -->
         </div>
         <div id="tabuleiro-container">
             <div id="tabuleiro">
                 <div id="tabuleiro-parte-baixa">
-                    <div class="zone" data-zona="fusao" ondrop="drop(event, 'fusao')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="fusao" >
                         Zona de fusao
                     </div>
-                    <div class="zone" data-zona="magias1" ondrop="drop(event, 'magias1')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="magias1" >
                         Zona de Magias/Armadilhas
                     </div>
-                    <div class="zone" data-zona="magias2" ondrop="drop(event, 'magias2')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="magias2" >
                         Zona de Magias/Armadilhas
                     </div>
-                    <div class="zone" data-zona="magias3" ondrop="drop(event, 'magias3')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="magias3" >
                         Zona de Magias/Armadilhas
                     </div>
-                    <div class="zone" data-zona="magias4" ondrop="drop(event, 'magias4')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="magias4" >
                         Zona de Magias/Armadilhas
                     </div>
-                    <div class="zone" data-zona="magias5" ondrop="drop(event, 'magias5')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="magias5">
                         Zona de Magias/Armadilhas
                     </div>
-                    <div class="zone" data-zona="deck" ondrop="drop(event, 'deck')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="deck" >
                         Zona do deck
                     </div>
                 </div>
                 <div id="tabuleiro-parte-alta">
-                    <div class="zone" data-zona="campo" ondrop="drop(event, 'campo')" ondragover="dragOver(event)">
+                    <div class="zone" data-zona="campo" >
                         Zona de Campo
                     </div>
-                    <div class="zone" data-zona="monstros1" ondrop="drop(event, 'monstros1')"
-                        ondragover="dragOver(event)">
+                    <div class="zone" data-zona="monstros1" >
                         Zona de Monstros
                     </div>
-                    <div class="zone" data-zona="monstros2" ondrop="drop(event, 'monstros2')"
-                        ondragover="dragOver(event)">
+                    <div class="zone" data-zona="monstros2" >
                         Zona de Monstros
                     </div>
-                    <div class="zone" data-zona="monstros3" ondrop="drop(event, 'monstros3')"
-                        ondragover="dragOver(event)">
+                    <div class="zone" data-zona="monstros3" >
                         Zona de Monstros
                     </div>
-                    <div class="zone" data-zona="monstros4" ondrop="drop(event, 'monstros4')"
-                        ondragover="dragOver(event)">
+                    <div class="zone" data-zona="monstros4" >
                         Zona de Monstros
                     </div>
-                    <div class="zone" data-zona="monstros5" ondrop="drop(event, 'monstros5')"
-                        ondragover="dragOver(event)">
+                    <div class="zone" data-zona="monstros5" >
                         Zona de Monstros
                     </div>
-                    <div class="zone" data-zona="cemiterio" ondrop="drop(event, 'cemiterio')"
-                        ondragover="dragOver(event)">
+                    <div class="zone" data-zona="cemiterio" >
                         Cemitério
                     </div>
                 </div>
             </div>
         </div>
-        <div class="mao" id="mao-jogador">
+        <div class="mao" data-zona="mao-jogador" id="mao-jogador">
             <!-- Aqui serão exibidas as cartas na mão do jogador -->
         </div>
         <div id="informacoes">
-            <!-- Aqui você exibirá informações sobre o jogo, como vida, turnos, etc. -->
         </div>
-        <script type="module" src="src/script.js"></script>
+        <script type="module" src="src/script.js">
+        </script>
     </body>
 
 </html>
