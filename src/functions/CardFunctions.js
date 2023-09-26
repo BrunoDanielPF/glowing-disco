@@ -1,8 +1,12 @@
 import { Card } from '../model/Card.js'
 
+const commonsComponents = {
+    divMaoJogador : document.getElementById("mao-jogador")
+}
+
 export function geraDeck(quantidadeCartas) {
     const deckJogador = [];
-
+//TODO: atribuir decks sobre cartas reais(customizadas, api open source ou alguma outra ideia)
     for (let i = 1; i <= quantidadeCartas; i++) {
         const nomeCarta = `Carta nome indice: ${i}`;
         const carta = new Card(nomeCarta, 1000, 800);
@@ -19,6 +23,7 @@ export function criaCartasNoDeck(deckJogador) {
         const cartaDiv = document.createElement("div");
 
         const quantidadeCartaDeck = document.createElement("span");
+        cartaDiv.className = "card-in-deck";
         quantidadeCartaDeck.textContent = quantidadeDeck;
         cartaDiv.appendChild(quantidadeCartaDeck);
 
@@ -66,18 +71,23 @@ export function mostraProximaCarta(carta) {
     let ultimoIndice = carta.length - 1;
 
     if(ultimoIndice >= 0) {
+        const maoJogadorDiv = commonsComponents.divMaoJogador
         const cartaPresente = carta[ultimoIndice];
-        cartaPresente.remove();
-        // if(cartaPresente >= 0) {
-            if(cartaPresente != null) {
-            ultimoIndice--
-            carta[ultimoIndice].style.display = "block";
+        if(cartaPresente) {
+            cartaPresente.style.position = "";
+            cartaPresente.classList.add("card-in-mao");
+            maoJogadorDiv.appendChild(cartaPresente);
         }
+        //TODO : revisar trecho de codigo
+        // cartaPresente.remove(); // remover o node removendo da mao do jogador tbm
+        // if(cartaPresente >= 0) {
+        ultimoIndice--
+        carta[ultimoIndice].style.display = "block";
     }
 }
 
 function criarCartaNaMao(carta) {
-    const maoJogadorDiv = document.getElementById("mao-jogador");
+    const maoJogadorDiv = commonsComponents.divMaoJogador
     const cartaDiv = document.createElement("div");
     cartaDiv.classList.add("card-in-mao");
     const nomeCarta = carta.nome;
