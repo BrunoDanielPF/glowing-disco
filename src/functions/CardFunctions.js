@@ -82,7 +82,9 @@ export function mostraProximaCarta(carta) {
         // cartaPresente.remove(); // remover o node removendo da mao do jogador tbm
         // if(cartaPresente >= 0) {
         ultimoIndice--
-        carta[ultimoIndice].style.display = "block";
+        if (ultimoIndice >= 0) {
+            carta[ultimoIndice].style.display = "block";
+        }
     }
 }
 
