@@ -27,7 +27,6 @@ export function moverCartaDoDeckParaMao(event) {
     cartasDeck.forEach((carta) => {
         var divCarta = carta.children;
         const divCartaArray = Array.from(divCarta);
-//TODO corrigir bug: desc: quando a carta e clicada para atribuir a mao, a carta nao e removida do deck e nao e mostrada a proxima carta
         mostraProximaCarta(divCartaArray);
     });
 }
