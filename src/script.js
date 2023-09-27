@@ -1,4 +1,5 @@
 import { iniciarJogo, moverCartaDoDeckParaMao, dragOver, drop } from "./core/FluxoJogo.js";
+import { virarParaCima, virarParaBaixo } from './functions/CardFunctions.js'
 
 document.addEventListener("DOMContentLoaded", () => {
     iniciarJogo();
@@ -15,3 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const zonaDeck = document.querySelector('.zone[data-zona="deck"]');
 zonaDeck.addEventListener("click", moverCartaDoDeckParaMao);
+
+const botaoCardParaCima = document.getElementById("botao-modal-virado-para-cima");
+botaoCardParaCima.addEventListener("click", () => virarParaCima())
+
+const botaoCardParaBaixo = document.getElementById("botao-modal-virado-para-baixo");
+botaoCardParaBaixo.addEventListener("click", () => virarParaBaixo())

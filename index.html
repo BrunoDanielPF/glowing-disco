@@ -30,6 +30,18 @@
             top: 250px;
         }
 
+        #modal {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #000;
+            z-index: 999; /* Valor alto para ficar acima dos outros elementos */
+        }
+
         /* Estilos para as cartas */
         .card {
             width: 100px;
@@ -83,7 +95,6 @@
 </head>
 
 <body>
-
     <body>
         <div id="mao-oponente">
         </div>
@@ -141,6 +152,12 @@
             <!-- Aqui serão exibidas as cartas na mão do jogador -->
         </div>
         <div id="informacoes">
+        </div>
+
+        <div id="modal" style="display: none;">
+            <p>Escolha a orientação da carta:</p>
+            <button id= "botao-modal-virado-para-cima">Virado para cima</button>
+            <button id= "botao-modal-virado-para-baixo">Virado para baixo</button>
         </div>
         <script type="module" src="src/script.js">
         </script>

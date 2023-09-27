@@ -1,7 +1,8 @@
 import { Card } from '../model/Card.js'
 
 const commonsComponents = {
-    divMaoJogador : document.getElementById("mao-jogador")
+    divMaoJogador : document.getElementById("mao-jogador"),
+    modal : document.getElementById("modal")
 }
 
 export function geraDeck(quantidadeCartas) {
@@ -68,7 +69,7 @@ export function criaCartasNaMao(maoDoJogador) {
 }
 
 export function mostraProximaCarta(carta) {
-    let ultimoIndice = carta.length - 1;
+    let ultimoIndice = carta.length - 1;    
 
     if(ultimoIndice >= 0) {
         const maoJogadorDiv = commonsComponents.divMaoJogador
@@ -88,7 +89,7 @@ export function mostraProximaCarta(carta) {
     }
 }
 
-function criarCartaNaMao(carta) {
+function criarCartaNaMao(carta) {   
     const maoJogadorDiv = commonsComponents.divMaoJogador
     const cartaDiv = document.createElement("div");
     cartaDiv.classList.add("card-in-mao");
@@ -114,6 +115,36 @@ function criarCartaNaMao(carta) {
 }
 var cartaArrastada = null
 function dragStart(event) {
+    if (event.target.classList.contains("card-in-mao"))
+        mostrarModal();
+
     cartaArrastada = event.target;
     event.dataTransfer.setData("text", event.target.id);
 }
+
+document.addEventListener("dragend", function (event) {
+    cartaArrastada = null;
+});
+
+/**
+ * funcao usada no html em modal
+ */
+export function virarParaCima() {
+    if (cartaArrastada) {
+        cartaArrastada.style.backgroundColor = "white";
+        esconderModal();
+    }
+}
+
+/**
+ * funcao usada no html em modal
+ */
+export function virarParaBaixo() {
+    if (cartaArrastada) {
+        cartaArrastada.style.backgroundColor = "black";
+        esconderModal();
+    }
+}
+
+const mostrarModal = () => commonsComponents.modal.style.display = "block";
+const esconderModal = () => commonsComponents.modal.style.display = "none";
