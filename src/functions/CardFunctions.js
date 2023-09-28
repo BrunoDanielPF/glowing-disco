@@ -123,7 +123,7 @@ function dragStart(event) {
 }
 
 document.addEventListener("dragend", function (event) {
-    cartaArrastada = null;
+    // cartaArrastada = null;
 });
 
 /**
