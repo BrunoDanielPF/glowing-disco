@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const zonaDeck = document.querySelector('.zone[data-zona="deck"]');
-zonaDeck.addEventListener("click", moverCartaDoDeckParaMao);
+zonaDeck.addEventListener("click", () => moverCartaDoDeckParaMao());
 
 const botaoCardParaCima = document.getElementById("botao-modal-virado-para-cima");
 botaoCardParaCima.addEventListener("click", () => virarParaCima())

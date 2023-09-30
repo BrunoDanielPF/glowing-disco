@@ -16,13 +16,7 @@ export function iniciarJogo() {
 }
 
 export function moverCartaDoDeckParaMao(event) {
-    const cartaDiv = event.target;
-
-    const maoJogadorDiv = document.getElementById("mao-jogador");
-
     const cartasDeck = document.querySelectorAll('.zone[data-zona="deck"]');
-
-    let maiorID = -1;
 
     cartasDeck.forEach((carta) => {
         var divCarta = carta.children;
